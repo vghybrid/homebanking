@@ -14,20 +14,20 @@ import static org.hamcrest.Matchers.*;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class CardUtilsTests {
 
-    @Autowired
-    CardRepository cardRepository;
-
-    @Test
-    public void cardNumberIsCreated() {
-        String cardNumber = CardUtils.getCardNumber(cardRepository);
-        assertThat(cardNumber,is(not(emptyOrNullString())));
-    }
-
-    @Test
-    public void CardNumberString() {
-        String cardNumber = CardUtils.getCardNumber(cardRepository);
-        assertThat(cardNumber, containsString("-"));
-    }
+//    @Autowired
+//    CardRepository cardRepository;
+//
+//    @Test
+//    public void cardNumberIsCreated() {
+//        String cardNumber = CardUtils.getCardNumber(cardRepository);
+//        assertThat(cardNumber,is(not(emptyOrNullString())));
+//    }
+//
+//    @Test
+//    public void CardNumberString() {
+//        String cardNumber = CardUtils.getCardNumber(cardRepository);
+//        assertThat(cardNumber, containsString("-"));
+//    }
 
     @Test
     public void cardCvvIsExist() {
