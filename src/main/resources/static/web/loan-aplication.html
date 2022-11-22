@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="./assets/img/favicon_trans.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/accounts.css">
+    <link rel="stylesheet" href="./assets/css/forms.css">
+    <title>ARS | Loan Aplication</title>
+</head>
+
+<body id="body-accounts">
+    <div id="app">
+        <div class='dashboard'>
+            <div class="dashboard-nav">
+                <header>
+                    <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    <a href="./index.html" class="brand-logo"><i class="fas fa-rocket"></i><span>ARS
+                            Homebanking</span></a>
+                </header>
+                <nav class="dashboard-nav-list">
+                    <a href="./index.html" class="dashboard-nav-item"><i class="fas fa-home"></i>Index</a>
+                    <a href="./accounts.html" class="dashboard-nav-item"><i
+                            class="fas fa-file-invoice-dollar"></i>Accounts</a>
+                    <a href="./cards.html" class="dashboard-nav-item"><i class="fas fa-credit-card"></i>Cards</a>
+                    <a href="./transfer.html" class="dashboard-nav-item"><i
+                            class="fas fa-comments-alt-dollar"></i>Transfer</a>
+                    <a href="./settings.html" class="dashboard-nav-item"><i class="fas fa-cogs"></i>Settings</a>
+                    <a href="./profile.html" class="dashboard-nav-item"><i class="fas fa-user"></i>Profile</a>
+                    <div class="nav-item-divider"></div>
+                    <a v-on:click="logout()" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </nav>
+            </div>
+            <div class='dashboard-app'>
+                <header class='dashboard-toolbar'>
+                    <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    <h1 class="ml-5">Hi, {{clients.firstName}}!</h1>
+                </header>
+                <div class='dashboard-content'>
+                    <div class="container">
+                        <h3 class="mb-4 p-0">Loans</h3>
+                    
+                    </div>
+                    <form class="container form-tc" v-on:submit.prevent="createLoan()">
+                        <fieldset>
+                            <h5 class="pt-5">1. Select loans to request</h5>
+                            <div class="cntr">
+                                <select v-model="getLoans" v-on:change="loadLoans()">
+                                    <option selected value="">Select loans</option>
+                                    <template v-for="loan in loans">
+                                        <option :value="loan.id">{{loan.name}}</option>
+                                    </template>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <h5>2. Select payments</h5>
+                        <fieldset v-show="getLoans != ''" class="destiny">
+                            <select  v-model="payment">
+                                <option selected value="">Select payments</option>
+                                <template v-for="pay in payments">
+                                    <option :value="pay">{{pay}}</option>
+                                </template>
+                            </select>
+                        </fieldset>
+                        <h6 v-show="getLoans == ''" class="text-center fw-bolder py-4 text-white fs-5"> You must first select the loan </h6>
+                        <h5>3. Transfer amount <b v-show="maxAmount != 0">(max amount: {{transformNumbers(maxAmount)}})</b></h5>
+                        <fieldset class="amount">
+                            <input placeholder="Amount" v-model="amount" type="number" class="input">
+                        </fieldset>
+                        <div class="d-flex justify-content-center my-3">
+                            <p class="text-white" v-show="amount != 0">Amount to pay: <b>{{amount}}</b> + <b v-if="getLoans == 1">20%</b><b v-else-if="getLoans == 3">15%</b> <b v-else-if="getLoans == 2">10%</b> = <b>{{calculateInteres(getLoans)}}</b></p>
+                        </div>
+                        <div class="d-flex justify-content-center my-3">
+                            <p class="text-white" v-show="amount != 0">Payments: <b>{{interest}}</b> / <b>{{payment}}</b> = <b>{{transformNumbers(interest / payment)}}</b></p>
+                        </div>
+                        <h5>4. Select destiny account</h5>
+                        <fieldset v-show="amount != ''" class="destiny">
+                            <select v-model="numberAccount">
+                                <option selected value="">Select account</option>
+                                <template v-for="account in destinyAccount">
+                                    <option :value="account.number">{{account.number}} - Balance: {{transformNumbers(account.balance)}}</option>
+                                </template>
+                            </select>
+                        </fieldset>
+                        <h6 v-show="amount == ''" class="text-center fw-bolder py-4 text-white fs-5"> You must type amount of the loan</h6>
+                        <h5>5. Request loan</h5>
+                        <div class="d-flex justify-content-center my-3">
+                            <button type="submit" class="cssbuttons-io-button"> Request Loan
+                                <div class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path
+                                            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/loan-transfers.js"></script>
+    <script>
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

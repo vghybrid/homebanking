@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/img/favicon_trans.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <title>ARS Login</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="loginBox">
+            <a class="indexButton" href="./index.html"><i class="fas fa-arrow-left"></i></a> 
+            <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+            <h3>Sign in</h3>
+            <form action="" method="post">
+                <div class="inputBox"> 
+                    <input id="uname" type="text" name="Username" placeholder="Username"> 
+                    <input id="pass" type="password" name="Password" placeholder="Password"> 
+                </div> 
+                <button v-model="login()" href="./accounts.html" type="submit"><a href="./accounts.html">Login</a></button>
+            </form>
+            <a href="#">Forget Password</a>
+            <a href="#">Sign up</a>
+        </div>
+        <div v-if="this.errorEmail == true" class="mensaje colores">
+            <h3>{{this.messageError}}</h3>
+        </div>
+        <div v-else-if="this.emailIncompleto == true" class="mensaje colores">
+            <h3>please put a valid email</h3>
+        </div>
+        <div v-else-if="this.errorLogin == true" class="mensaje colores">
+            <h3>invalid email or password</h3>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/login.js"></script>
+</body>
+
+</html>

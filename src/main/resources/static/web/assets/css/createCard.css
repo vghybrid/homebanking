@@ -1,0 +1,354 @@
+@import url(./variables.css);
+
+html,
+body {
+    font-family: 'Cairo', sans-serif;
+    color: #A6A8B6;
+}
+
+.container-custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+[type="radio"] {
+    z-index: -1;
+    position: absolute;
+    opacity: 0;
+}
+
+[type="radio"]:checked~label {
+    border-color: var(--secundary-color);
+    background-color: rgba(97, 154, 234, 0.16);
+    color: #FFF;
+}
+
+[type="radio"]:checked~label:before {
+    will-change: transform, border-width, border-color;
+    animation: bubble 1s ease-in;
+}
+
+[type="radio"]:checked~label:after {
+    will-change: opacity, box-shadow;
+    animation: sparkles 700ms ease-in-out;
+}
+
+[type="radio"]:checked~label>span {
+    will-change: transform;
+    border: 0;
+    background-image: linear-gradient(to top right, var(--cuarto-color), var(--secundary-color));
+    animation: radio 400ms cubic-bezier(0.17, 0.89, 0.32, 1.49);
+}
+
+[type="radio"]:checked~label>span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 10px;
+    background-color: var(--cuarto-color);
+}
+
+[type="radio"]:checked~label .card {
+    will-change: box-shadow;
+    animation: card 500ms ease-in-out forwards;
+}
+
+[type="radio"]:checked~label .card:after {
+    will-change: transform;
+    animation: shine 500ms ease-in forwards;
+    animation-delay: 100ms;
+}
+
+label {
+    position: relative;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 20px auto 100px;
+    grid-gap: 20px;
+    height: 62px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    transition: all 300ms ease-in;
+}
+
+label:hover {
+    border-color: var(--secundary-color);
+    background-color: var(-primary-color);
+}
+
+label:before,
+label:after {
+    position: absolute;
+    left: 29px;
+    border-radius: 50%;
+    content: '';
+}
+
+label:before {
+    margin: -2rem;
+    border: solid 2rem #545461;
+    width: 4rem;
+    height: 4rem;
+    transform: scale(0);
+}
+
+
+
+label>span {
+    position: relative;
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px solid #454861;
+    background-image: linear-gradient(to bottom, #3B4059, #1C1E2D);
+}
+
+.card {
+    position: relative;
+    width: 243px;
+    height: 152px;
+    padding: 22px 24px;
+    border-radius: 16px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    background-image: linear-gradient(45deg, #FFF, #CDCDCD);
+    overflow: hidden;
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    transform: translateX(-70px);
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+}
+
+.card--blue {
+    background-image: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+}
+
+.card--dark {
+    background-image: linear-gradient(to bottom, #B2BEB5 0%, #A3AFA6 100%);
+}
+
+.card--sm {
+    position: absolute;
+    right: -76px;
+    transform: scale(0.24);
+}
+
+.card__chip {
+    width: 39px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid rgba(102, 84, 50, 0.5);
+    box-shadow: inset 1px 1px 0px rgba(179, 146, 86, 0.5);
+    background-image: linear-gradient(90deg, #D0A963, #FFE6BA);
+}
+
+.card__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 46px;
+}
+
+.card__symbol {
+    display: flex;
+}
+
+.card__symbol span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #FB4646;
+}
+
+.card__symbol span:last-child {
+    background-color: rgba(255, 163, 55, 0.75);
+    margin-left: -13px;
+}
+
+.text__row {
+    display: grid;
+    grid-template-columns: 54px 64px;
+    grid-gap: 6px;
+}
+
+.text__row:last-of-type {
+    grid-template-columns: 45px 54px;
+    margin-top: 7px;
+}
+
+.text__loader {
+    height: 13px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.option:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+@media (max-width: 425px) {
+    .container-custom {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+@keyframes radio {
+
+    0%,
+    17.5% {
+        transform: scale(0);
+    }
+}
+
+@keyframes card {
+    0% {
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.25);
+        transform: scale(0.24);
+    }
+
+    45% {
+        box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.5);
+        transform: scale(0.25);
+    }
+
+    100% {
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4);
+        transform: scale(0.24);
+    }
+}
+
+@keyframes shine {
+    from {
+        transform: translateX(-70px) rotate(10deg);
+    }
+
+    to {
+        transform: translateX(300px) rotate(10deg);
+    }
+}
+
+/* From uiverse.io by @adamgiebl */
+.cssbuttons-io-button {
+    background: var(--secundary-color);
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em var(--secundary-color);
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    margin-bottom: 20px;
+}
+
+.cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em var(--secundary-color);
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: var(--secundary-color);
+}
+
+.cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+}
+
+.logo-visa {
+    height: 30px;
+    object-fit: cover;
+}
+.logo-master {
+    height: 37px;
+    padding-left: 30px;
+}
+
+.form-tc {
+    background: var(--secundary-color);
+    border-radius: 25px;
+    border: 1px solid var(--primary-color);
+    opacity: .95;
+}
+
+/* @keyframes bubble {
+    15% {
+        transform: scale(1);
+        border-color: #545461;
+        border-width: 2rem;
+    }
+
+    30%,
+    100% {
+        transform: scale(1);
+        border-color: #545461;
+        border-width: 0;
+    }
+}
+
+@keyframes sparkles {
+
+    0%,
+    10% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    15% {
+        opacity: 1;
+        transform: scale(1.2) rotate(-20deg);
+        box-shadow: 2rem*cos(-90deg)0.375rem*cos(-30deg) 2rem*sin(-90deg)0.375rem*sin(-30deg) 0 0rem #ff8080, 2rem*cos(-90deg)0.375rem*cos(150deg) 2rem*sin(-90deg)0.375rem*sin(150deg) 0 0rem #ffec80, 2rem*cos(-38.5714285714deg)0.375rem*cos(21.4285714286deg) 2rem*sin(-38.5714285714deg)0.375rem*sin(21.4285714286deg) 0 0rem #ffec80, 2rem*cos(-38.5714285714deg)0.375rem*cos(201.4285714286deg) 2rem*sin(-38.5714285714deg)0.375rem*sin(201.4285714286deg) 0 0rem #a6ff80, 2rem*cos(12.8571428571deg)0.375rem*cos(72.8571428571deg) 2rem*sin(12.8571428571deg)0.375rem*sin(72.8571428571deg) 0 0rem #a6ff80, 2rem*cos(12.8571428571deg)0.375rem*cos(252.8571428571deg) 2rem*sin(12.8571428571deg)0.375rem*sin(252.8571428571deg) 0 0rem #80ffc8, 2rem*cos(64.2857142857deg)0.375rem*cos(124.2857142857deg) 2rem*sin(64.2857142857deg)0.375rem*sin(124.2857142857deg) 0 0rem #80ffc8, 2rem*cos(64.2857142857deg)0.375rem*cos(304.2857142857deg) 2rem*sin(64.2857142857deg)0.375rem*sin(304.2857142857deg) 0 0rem #80caff, 2rem*cos(115.7142857143deg)0.375rem*cos(175.7142857143deg) 2rem*sin(115.7142857143deg)0.375rem*sin(175.7142857143deg) 0 0rem #80caff, 2rem*cos(115.7142857143deg)0.375rem*cos(355.7142857143deg) 2rem*sin(115.7142857143deg)0.375rem*sin(355.7142857143deg) 0 0rem #a480ff, 2rem*cos(167.1428571429deg)0.375rem*cos(227.1428571429deg) 2rem*sin(167.1428571429deg)0.375rem*sin(227.1428571429deg) 0 0rem #a480ff, 2rem*cos(167.1428571429deg)0.375rem*cos(407.1428571429deg) 2rem*sin(167.1428571429deg)0.375rem*sin(407.1428571429deg) 0 0rem #ff80ee, 2rem*cos(218.5714285714deg)0.375rem*cos(278.5714285714deg) 2rem*sin(218.5714285714deg)0.375rem*sin(278.5714285714deg) 0 0rem #ff80ee, 2rem*cos(218.5714285714deg)0.375rem*cos(458.5714285714deg) 2rem*sin(218.5714285714deg)0.375rem*sin(458.5714285714deg) 0 0rem #ff8080;
+    }
+} */

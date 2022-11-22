@@ -1,0 +1,363 @@
+@import url(./variables.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#body-accounts {
+  background: hsla(191, 88%, 81%, 1);
+  background: linear-gradient(90deg, hsla(191, 88%, 81%, 1) 0%, hsla(260, 72%, 82%, 1) 50%, hsla(247, 73%, 69%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(191, 88%, 81%, 1) 0%, hsla(260, 72%, 82%, 1) 50%, hsla(247, 73%, 69%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(191, 88%, 81%, 1) 0%, hsla(260, 72%, 82%, 1) 50%, hsla(247, 73%, 69%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#A4E9F9", endColorstr="#C5AEF2", GradientType=1);
+  background-repeat: no-repeat;
+}
+
+#main-accounts {
+  min-height: 92vh;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+
+nav {
+  height: 8vh;
+}
+
+main {
+  min-height: 82vh;
+}
+
+footer {
+  min-height: 10vh;
+}
+
+
+.logo {
+  width: 250px;
+  height: 50px;
+  object-fit: cover;
+}
+
+
+
+.btn-rounded {
+  border-radius: 35px;
+}
+
+.title-account {
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding-top: 1.25rem;
+  line-height: 0;
+}
+
+.card-margin {
+  margin-bottom: 1.875rem;
+}
+
+.card {
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+
+.card-accounts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid #e6e4e9;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.card .card-header.no-border {
+  border: 0;
+}
+
+.card .card-header {
+  background: none;
+  padding: 0 0.9375rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.card-header:first-child {
+  border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
+}
+
+.card-account .card-account-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  width: 7rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-primary .card-account-date-day {
+  color: var(--cuarto-color);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-primary .card-account-date-month {
+  color: #4e73e5;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fcfcfd;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-secondary .card-account-date-day {
+  color: #dde1e9;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-secondary .card-account-date-month {
+  color: #dde1e9;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #e8faf8;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-success .card-account-date-day {
+  color: #17d1bd;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-success .card-account-date-month {
+  color: #17d1bd;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ebf7ff;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-info .card-account-date-day {
+  color: #36afff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-info .card-account-date-month {
+  color: #36afff;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f0fafb;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.card-account .card-account-title-wrapper .card-account-date-base .card-account-date-day {
+  color: #68CBD7;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+
+.card-account .card-account-title-wrapper .card-account-meeting-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.card-account .card-account-title-wrapper .card-account-meeting-info .card-account-pro-title {
+  color: #3c4142;
+  font-size: 14px;
+  padding: 5px 0 5px 0;
+}
+
+.card-account .card-account-title-wrapper .card-account-meeting-info .card-account-meeting-time {
+  font-size: 13px;
+}
+
+.card-account .card-account-meeting-points {
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: .5rem;
+}
+
+.card-account .card-account-meeting-points .card-account-meeting-item {
+  display: list-item;
+  color: #727686;
+}
+
+.card-account .card-account-meeting-points .card-account-meeting-item span {
+  margin-left: .5rem;
+}
+
+.card-account .card-account-meeting-action {
+  text-align: right;
+}
+
+.card-account .card-account-meeting-action a {
+  text-transform: uppercase;
+}
+
+.card-accounts {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.action-button {
+  border: 1px solid var(--tercer-color);
+  border-radius: 40px;
+  color: var(--tercer-color);
+  box-shadow: none;
+  text-shadow: none;
+  padding: .3rem .8rem;
+  background: transparent;
+  transition: background-color 0.25s;
+  outline: none;
+}
+
+.header-blue .action-button,
+.header-blue .action-button:not(.disabled):active {
+  border: 1px solid var(--tercer-color);
+  border-radius: 40px;
+  color: var(--tercer-color);
+  box-shadow: none;
+  text-shadow: none;
+  padding: .3rem .8rem;
+  background: transparent;
+  transition: background-color 0.25s;
+  outline: none;
+}
+
+.header-blue .action-button:hover {
+  color: var(--cuarto-color);
+}
+
+.btn:first-child:hover,
+:not(.btn-check)+.btn:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.card .card-block {
+  padding: 30px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+
+@media (max-width: 769px) {
+  nav {
+    min-height: 8vh;
+    height: 100%;
+  }
+
+  body {
+    line-height: normal !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .hscroll {
+    overflow-x: auto;
+  }
+  .title-account{
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    width: 200px;
+  }
+
+  .title-account {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .title-account {
+    font-size: 18px;
+  }
+}

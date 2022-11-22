@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="./assets/img/favicon_trans.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/accounts.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
+    <title>ARS | Transactions</title>
+</head>
+
+<body id="body-accounts">
+    <div id="app">
+        <div class='dashboard'>
+            <div class="dashboard-nav">
+                <header>
+                    <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    <a href="./index.html" class="brand-logo"><i class="fas fa-rocket"></i><span>ARS
+                            Homebanking</span></a>
+                </header>
+                <nav class="dashboard-nav-list">
+                    <a href="./index.html" class="dashboard-nav-item"><i class="fas fa-home"></i>Index</a>
+                    <a href="./accounts.html" class="dashboard-nav-item"><i
+                            class="fas fa-file-invoice-dollar"></i>Accounts</a>
+                    <a href="./cards.html" class="dashboard-nav-item"><i class="fas fa-credit-card"></i>Cards</a>
+                    <a href="./transfer.html" class="dashboard-nav-item"><i
+                            class="fas fa-comments-alt-dollar"></i>Transfer</a>
+                    <a href="./settings.html" class="dashboard-nav-item"><i class="fas fa-cogs"></i>Settings</a>
+                    <a href="./profile.html" class="dashboard-nav-item"><i class="fas fa-user"></i>Profile</a>
+                    <div class="nav-item-divider"></div>
+                    <a v-on:click="logout()" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </nav>
+            </div>
+            <div class='dashboard-app'>
+                <header class='dashboard-toolbar'>
+                    <a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    <h1 class="ml-5">Hi, {{clients.firstName}}!</h1>
+                </header>
+                <div class='dashboard-content'>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/accounts.js"></script>
+    <script>
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
